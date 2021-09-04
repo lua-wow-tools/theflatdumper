@@ -1,3 +1,5 @@
-## Interface: 10000
+## Interface-Retail: 90105
+## Interface-Classic: 11400
+## Interface-BCC: 20502
 ## SavedVariables: TheFlatDumperBuildInfo, TheFlatDumperData
 TheFlatDumper.lua

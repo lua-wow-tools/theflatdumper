@@ -1,0 +1,19 @@
+name: release
+on:
+  release:
+    types:
+    - created
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: BigWigsMods/packager@v1
+      with:
+        args: -g retail
+    - uses: BigWigsMods/packager@v1
+      with:
+        args: -g classic
+    - uses: BigWigsMods/packager@v1
+      with:
+        args: -g bcc

@@ -1,0 +1,18 @@
+name: test
+on:
+  pull_request:
+  push:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup lua
+      run: |
+        python3 -m pip install hererocks
+        hererocks -l 5.1 -r 3.5.0 .lua
+        eval $(.lua/bin/luarocks path)
+        .lua/bin/luarocks install luacheck
+        .lua/bin/luarocks install busted
+    - run: .lua/bin/luacheck spec src
+    - run: .lua/bin/busted

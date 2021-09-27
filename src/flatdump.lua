@@ -1,4 +1,6 @@
-local function flatdump(top)
+local _, G = ...
+
+function G.flatdump(top)
   local refs = {}
   local refidx = {}
   local stack = {}
@@ -51,16 +53,4 @@ local function flatdump(top)
     end
   end
   return refs
-end
-
-local buildinfo = { _G.GetBuildInfo() }
-local data = flatdump(_G)
-
-do
-  local frame = _G.CreateFrame('Frame')
-  frame:RegisterEvent('PLAYER_LOGOUT')
-  frame:SetScript('OnEvent', function()
-    _G.TheFlatDumperBuildInfo = buildinfo
-    _G.TheFlatDumperData = data
-  end)
 end

@@ -31,6 +31,10 @@ describe('pprint', function()
       name = 'flat string key dict',
       input = { a = 42, b = 'foo' },
       output = '{\n\t["a"] = 42,\n\t["b"] = "foo",\n}\n',
+    },{
+      name = 'nested table',
+      input = { a = { b = 'c' } },
+      output = '{\n\t["a"] = {\n\t\t["b"] = "c",\n\t},\n}\n',
     }
   }
 

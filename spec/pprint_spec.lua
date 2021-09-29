@@ -5,6 +5,7 @@ describe('pprint', function()
       assert = assert,
       format = string.format,
       ipairs = ipairs,
+      next = next,
       pairs = pairs,
       sort = table.sort,
       strrep = string.rep,

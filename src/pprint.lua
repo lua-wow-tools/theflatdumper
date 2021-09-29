@@ -30,12 +30,16 @@ function G.pprint(t)
     elseif ty == 'string' then
       append(format('%q,\n', v))
     elseif ty == 'table' then
-      append('{\n')
-      level = level + 1
-      pptkvs(v)
-      level = level - 1
-      indent()
-      append('},\n')
+      if next(v) == nil then
+        append('{},\n')
+      else
+        append('{\n')
+        level = level + 1
+        pptkvs(v)
+        level = level - 1
+        indent()
+        append('},\n')
+      end
     else
       error('invalid table value type ' .. ty)
     end

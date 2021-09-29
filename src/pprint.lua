@@ -26,19 +26,19 @@ function G.pprint(t)
   local function pptv(v)
     local ty = type(v)
     if ty == 'number' then
-      append(format('%d,\n', v))
+      append(format('%d', v))
     elseif ty == 'string' then
-      append(format('%q,\n', v))
+      append(format('%q', v))
     elseif ty == 'table' then
       if next(v) == nil then
-        append('{},\n')
+        append('{}')
       else
         append('{\n')
         level = level + 1
         pptkvs(v)
         level = level - 1
         indent()
-        append('},\n')
+        append('}')
       end
     else
       error('invalid table value type ' .. ty)
@@ -46,9 +46,10 @@ function G.pprint(t)
   end
   function pptkvs(tt)
     if isarray(tt) then
-      for _, v in ipairs(tt) do
+      for i, v in ipairs(tt) do
         indent()
         pptv(v)
+        append(format(', --[%d]\n', i))
       end
     else
       local keys = {}
@@ -61,6 +62,7 @@ function G.pprint(t)
         indent()
         append(format('[%q] = ', k))
         pptv(tt[k])
+        append(',\n')
       end
     end
   end

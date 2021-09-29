@@ -26,8 +26,8 @@ describe('pprint', function()
       output = '{\n}\n',
     },{
       name = 'flat array',
-      input = {42, 'foo', 99, 'bar'},
-      output = '{\n\t42,\n\t"foo",\n\t99,\n\t"bar",\n}\n',
+      input = {42, 'foo', 99},
+      output = '{\n\t42, --[1]\n\t"foo", --[2]\n\t99, --[3]\n}\n',
     },{
       name = 'flat string key dict',
       input = { a = 42, b = 'foo' },

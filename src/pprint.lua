@@ -41,7 +41,7 @@ function G.pprint(t)
     end
   end
   function pptkvs(tt)
-    if isarray(t) then
+    if isarray(tt) then
       for _, v in ipairs(tt) do
         indent()
         pptv(v)

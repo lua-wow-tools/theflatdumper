@@ -3,4 +3,5 @@
 ## Interface-BCC: 20502
 ## SavedVariables: TheFlatDumperBuildInfo, TheFlatDumperData
 src\flatdump.lua
+src\pprint.lua
 src\TheFlatDumper.lua

@@ -8,5 +8,5 @@ local toexport = {
 local frame = _G.CreateFrame('Frame')
 frame:RegisterEvent('PLAYER_LOGOUT')
 frame:SetScript('OnEvent', function()
-  _G.TheFlatDumper = LibStub('LibDeflate'):CompressDeflate(G.pprint(toexport))
+  _G.TheFlatDumper = _G.LibStub('LibDeflate'):CompressDeflate(G.pprint(toexport))
 end)

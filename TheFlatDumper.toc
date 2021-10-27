@@ -4,4 +4,6 @@
 ## SavedVariables: TheFlatDumper
 src\flatdump.lua
 src\pprint.lua
-src\TheFlatDumper.lua
+src\export.lua
+libs\LibStub\LibStub.lua
+libs\LibDeflate\lib.xml

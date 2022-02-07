@@ -1,0 +1,15 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.1.0
+  hooks:
+  - id: check-yaml
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+- repo: https://github.com/lunarmodules/luacheck
+  rev: 81e0835cf5b54b9cb2101b21edeec011dec5fff3
+  hooks:
+  - id: luacheck
+- repo: meta
+  hooks:
+  - id: check-hooks-apply
+  - id: check-useless-excludes

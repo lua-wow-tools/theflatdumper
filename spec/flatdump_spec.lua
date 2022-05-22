@@ -1,6 +1,6 @@
 describe('flatdump', function()
-
-  local flatdump do
+  local flatdump
+  do
     local addonenv = {}
     loadfile('src/flatdump.lua')('moo', addonenv)
     flatdump = addonenv.flatdump

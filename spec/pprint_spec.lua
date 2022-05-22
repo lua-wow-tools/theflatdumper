@@ -1,6 +1,6 @@
 describe('pprint', function()
-
-  local pprint do
+  local pprint
+  do
     local fenv = {
       assert = assert,
       format = string.format,
@@ -24,19 +24,22 @@ describe('pprint', function()
       name = 'empty input',
       input = {},
       output = '{\n}\n',
-    },{
+    },
+    {
       name = 'flat array',
-      input = {42, 'foo', 99},
+      input = { 42, 'foo', 99 },
       output = '{\n\t42, --[1]\n\t"foo", --[2]\n\t99, --[3]\n}\n',
-    },{
+    },
+    {
       name = 'flat string key dict',
       input = { a = 42, b = 'foo' },
       output = '{\n\t["a"] = 42,\n\t["b"] = "foo",\n}\n',
-    },{
+    },
+    {
       name = 'nested table',
       input = { a = { b = 'c' } },
       output = '{\n\t["a"] = {\n\t\t["b"] = "c",\n\t},\n}\n',
-    }
+    },
   }
 
   for _, t in ipairs(tests) do
@@ -44,5 +47,4 @@ describe('pprint', function()
       assert.same(t.output, pprint(t.input))
     end)
   end
-
 end)

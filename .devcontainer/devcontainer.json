@@ -1,0 +1,8 @@
+{
+	"name": "lua-wow-tools/theflatdumper",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"postCreateCommand": "pre-commit install && pre-commit run -a",
+	"remoteUser": "vscode"
+}

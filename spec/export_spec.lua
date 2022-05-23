@@ -3,7 +3,16 @@ describe('export', function()
     local globalenv = {
       C_Console = {
         GetAllCommands = function()
-          return 'commands'
+          return {
+            { command = 'foo' },
+            { command = 'bar' },
+            { command = 'baz' },
+          }
+        end,
+      },
+      C_CVar = {
+        GetCVarDefault = function(arg)
+          return 'default_' .. arg
         end,
       },
       CreateFrame = function()
@@ -17,6 +26,7 @@ describe('export', function()
       GetBuildInfo = function()
         return 1, 2, 3, 4
       end,
+      ipairs = ipairs,
       LibStub = function()
         return {
           CompressDeflate = function(_, arg)
@@ -37,7 +47,16 @@ describe('export', function()
     setfenv(loadfile('src/export.lua'), globalenv)('moo', addonenv)
     local expected = {
       BuildInfo = { 1, 2, 3, 4 },
-      ConsoleCommands = 'commands',
+      ConsoleCommands = {
+        { command = 'foo' },
+        { command = 'bar' },
+        { command = 'baz' },
+      },
+      CVarDefaults = {
+        bar = 'default_bar',
+        baz = 'default_baz',
+        foo = 'default_foo',
+      },
       Data = 'flatdump',
     }
     assert.same(expected, globalenv.TheFlatDumper)

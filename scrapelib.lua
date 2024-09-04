@@ -123,7 +123,12 @@ local dataMT = {
   end,
 }
 
-return function(filename)
+local function parseDataDump(filename)
+  local data = loadstring('return ' .. require('pl.file').read(filename))
+  return setmetatable(data(), dataMT)
+end
+
+local function parseSavedVariables(filename)
   local fenv = {}
   setfenv(loadfile(filename), fenv)()
   local str = require('libdeflate'):DecompressDeflate(fenv.TheFlatDumper)
@@ -131,3 +136,8 @@ return function(filename)
   setmetatable(ret.Data, dataMT)
   return ret
 end
+
+return {
+  parseDataDump = parseDataDump,
+  parseSavedVariables = parseSavedVariables,
+}

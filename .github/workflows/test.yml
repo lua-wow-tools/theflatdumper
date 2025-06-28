@@ -10,7 +10,7 @@ jobs:
     - name: setup lua
       run: |
         python3 -m pip install hererocks
-        hererocks -l 5.1 -r 3.5.0 .lua
+        hererocks -l 5.1 -r 3.5.0 --no-readline .lua
         eval $(.lua/bin/luarocks path)
         .lua/bin/luarocks install luacheck
         .lua/bin/luarocks install busted

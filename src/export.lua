@@ -5,10 +5,8 @@ local toexport = {
   Data = G.flatdump(_G),
 }
 
-local frame = _G.CreateFrame('Frame')
-frame:RegisterEvent('PLAYER_LOGOUT')
-frame:SetScript('OnEvent', function()
-  toexport.ConsoleCommands = _G.C_Console.GetAllCommands()
+_G.C_Timer.After(0, function()
+  toexport.ConsoleCommands = _G.ConsoleGetAllCommands()
   toexport.CVarDefaults = (function()
     local t = {}
     for _, command in ipairs(toexport.ConsoleCommands) do

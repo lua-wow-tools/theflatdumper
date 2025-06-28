@@ -1,28 +1,23 @@
 describe('export', function()
   it('works', function()
     local globalenv = {
-      C_Console = {
-        GetAllCommands = function()
-          return {
-            { command = 'foo' },
-            { command = 'bar' },
-            { command = 'baz' },
-          }
-        end,
-      },
+      ConsoleGetAllCommands = function()
+        return {
+          { command = 'foo' },
+          { command = 'bar' },
+          { command = 'baz' },
+        }
+      end,
       C_CVar = {
         GetCVarDefault = function(arg)
           return 'default_' .. arg
         end,
       },
-      CreateFrame = function()
-        return {
-          RegisterEvent = function() end,
-          SetScript = function(_, _, script)
-            script()
-          end,
-        }
-      end,
+      C_Timer = {
+        After = function(_, f)
+          f()
+        end,
+      },
       GetBuildInfo = function()
         return 1, 2, 3, 4
       end,
